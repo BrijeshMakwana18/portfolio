@@ -160,7 +160,7 @@ export default function Hero({ theme, toggleTheme }) {
         <ProjectContainer ref={sections}>
           {projects.map((item, index) => {
             return (
-              <ProjectCard>
+              <ProjectCard key={index}>
                 <img src={item.image} />
               </ProjectCard>
             );
@@ -170,7 +170,7 @@ export default function Hero({ theme, toggleTheme }) {
       {section === "skills" && (
         <SkillContainer ref={sections}>
           {skills.map((item, index) => {
-            return <SkillCard>{item}</SkillCard>;
+            return <SkillCard key={index}>{item}</SkillCard>;
           })}
         </SkillContainer>
       )}
