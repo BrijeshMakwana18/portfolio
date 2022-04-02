@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Header } from "../components";
+import { Hero } from "../components";
 import React, { useState, useEffect } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 const lightTheme = {
@@ -7,6 +7,11 @@ const lightTheme = {
   primary: "#E8E9EB",
   text: "#0E151C",
   blue: "#5DA2EF",
+  light: "rgb(34, 39, 43)",
+  link: "#22272b",
+  linkHover: "#42a5f5",
+  filterToggle: "#E9EBED",
+  filterButton: "#FBFDFF",
 };
 
 const darkTheme = {
@@ -14,6 +19,11 @@ const darkTheme = {
   primary: "#181F25",
   text: "#FAFDFF",
   blue: "#5DA2EF",
+  light: "rgb(241, 242, 244)",
+  link: "#22272b",
+  linkHover: "#42a5f5",
+  filterToggle: "#181F25",
+  filterButton: "#0E151C",
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -36,7 +46,7 @@ const GlobalStyles = createGlobalStyle`
   body{
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    font-family: "Poppins","PoppinsMedium","PoppinsBold", sans-serif;
+    font-family: "PoppinsBold", sans-serif;
     margin: 0px;
     padding:0px;
   }
@@ -54,7 +64,7 @@ export default function Home(props) {
       <Head>
         <title>Brijesh Makwanna</title>
       </Head>
-      <Header theme={theme} toggleTheme={toggleTheme} />
+      <Hero theme={theme} toggleTheme={toggleTheme} />
     </ThemeProvider>
   );
 }
