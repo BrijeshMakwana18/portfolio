@@ -102,13 +102,13 @@ export const ProfileSocialLink = styled.a`
 export const InfoContainer = styled.ul`
   display: flex;
   justify-content: center;
-  column-gap: 1rem;
+  column-gap: 10%;
 `;
 
 export const InfoItem = styled.div`
   margin-top: 3vh;
   display: flex;
-  width: 5vw;
+  width: 30%;
   flex-direction: column;
   align-items: center;
   text-align: center;
