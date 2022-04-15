@@ -1,4 +1,5 @@
 import Head from "next/head";
+import axios from "axios";
 import { Hero } from "../components";
 import React, { useState, useEffect } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -75,11 +76,16 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { projects, skills } = Data;
+  const profile = "http://localhost:8080/api/v1/profile";
+  let data = [];
+  await axios.get(profile).then((res) => {
+    data = res.data.projects;
+  });
   return {
     props: {
-      projects,
+      projects: data,
       skills,
     },
   };
