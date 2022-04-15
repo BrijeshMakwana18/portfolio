@@ -28,36 +28,7 @@ import {
   EducationCard,
 } from "./styles";
 
-const projects = [
-  {
-    title: `Victoria's Secret`,
-    type: "Mobile",
-    image: "/vs.png",
-  },
-  {
-    title: `H&M`,
-    type: "Mobile",
-    image: "/hm.png",
-  },
-  {
-    title: `Boots`,
-    type: "Mobile",
-    image: "/boots.png",
-  },
-];
-
-const skills = [
-  "Javascript",
-  "React Native",
-  "ReactJS",
-  "NextJS",
-  "NodeJS",
-  "Express",
-  "MongoDB",
-  "Git",
-];
-
-export default function Hero({ theme, toggleTheme }) {
+export default function Hero({ theme, toggleTheme, projects, skills }) {
   const profile = useRef(null);
   const name = useRef(null);
   const profession = useRef(null);
@@ -68,7 +39,7 @@ export default function Hero({ theme, toggleTheme }) {
   const filters = useRef(null);
   const sections = useRef(null);
 
-  const [section, setSection] = useState("projects");
+  const [filter, setFilter] = useState("projects");
   useEffect(() => {
     if (typeof window !== "undefined") {
       async function animate() {
@@ -92,6 +63,9 @@ export default function Hero({ theme, toggleTheme }) {
       animate();
     }
   }, []);
+  const handleFilterChange = (filter) => {
+    setFilter(filter);
+  };
   return (
     <Container>
       <ThemeToggle onClick={toggleTheme}>
@@ -138,25 +112,19 @@ export default function Hero({ theme, toggleTheme }) {
       </ButtonContainer>
       <FilterToggle ref={filters}>
         <FilterButton
-          onClick={() => setSection("projects")}
-          active={section === "projects"}
+          onClick={() => handleFilterChange("projects")}
+          active={filter === "projects"}
         >
           Projects
         </FilterButton>
         <FilterButton
-          onClick={() => setSection("skills")}
-          active={section === "skills"}
+          onClick={() => handleFilterChange("skills")}
+          active={filter === "skills"}
         >
           Skills
         </FilterButton>
-        {/* <FilterButton
-          onClick={() => setSection("education")}
-          active={section === "education"}
-        >
-          Education
-        </FilterButton> */}
       </FilterToggle>
-      {section === "projects" && (
+      {filter === "projects" && (
         <ProjectContainer ref={sections}>
           {projects.map((item, index) => {
             return (
@@ -167,17 +135,12 @@ export default function Hero({ theme, toggleTheme }) {
           })}
         </ProjectContainer>
       )}
-      {section === "skills" && (
+      {filter === "skills" && (
         <SkillContainer ref={sections}>
           {skills.map((item, index) => {
             return <SkillCard key={index}>{item}</SkillCard>;
           })}
         </SkillContainer>
-      )}
-      {section === "education" && (
-        <EducationContainer ref={sections}>
-          <EducationCard>Bachelor of Engineering</EducationCard>
-        </EducationContainer>
       )}
     </Container>
   );

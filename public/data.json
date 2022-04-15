@@ -1,0 +1,30 @@
+{
+  "projects": [
+    {
+      "title": "Victoria's Secret",
+      "type": "Mobile",
+      "image": "/vs.png"
+    },
+    {
+      "title": "H&M",
+      "type": "Mobile",
+      "image": "/hm.png"
+    },
+    {
+      "title": "Boots",
+      "type": "Mobile",
+      "image": "/boots.png"
+    }
+  ],
+
+  "skills": [
+    "Javascript",
+    "React Native",
+    "ReactJS",
+    "NextJS",
+    "NodeJS",
+    "Express",
+    "MongoDB",
+    "Git"
+  ]
+}

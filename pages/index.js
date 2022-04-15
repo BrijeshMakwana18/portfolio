@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Hero } from "../components";
 import React, { useState, useEffect } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import Data from "../public/data.json";
 const lightTheme = {
   body: "#FAFDFF",
   primary: "#E8E9EB",
@@ -64,7 +65,22 @@ export default function Home(props) {
       <Head>
         <title>Brijesh Makwanna</title>
       </Head>
-      <Hero theme={theme} toggleTheme={toggleTheme} />
+      <Hero
+        projects={props.projects}
+        skills={props.skills}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
     </ThemeProvider>
   );
+}
+
+export async function getStaticProps() {
+  const { projects, skills } = Data;
+  return {
+    props: {
+      projects,
+      skills,
+    },
+  };
 }
